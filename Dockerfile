@@ -1,5 +1,10 @@
 FROM rhche/centos_jdk8
 
+RUN yum update -y && \
+  yum install -y docker tar which && \
+  yum clean all
+ 
+  
 # START - copied from https://github.com/fabric8io/builder-clients
 
 RUN curl --retry 999 --retry-max-time 0  -sSL https://github.com/openshift/origin/releases/download/v1.5.0/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz | tar xzv && \
