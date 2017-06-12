@@ -1,4 +1,4 @@
-FROM eclipse/centos_jdk8
+FROM rhche/centos_jdk8
 
 # START - copied from https://github.com/fabric8io/builder-clients
 
