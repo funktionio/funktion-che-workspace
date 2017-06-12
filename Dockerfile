@@ -1,10 +1,8 @@
 FROM rhche/centos_jdk8
 
-RUN yum update -y && \
-  yum install -y docker tar which && \
-  yum clean all
- 
-  
+USER root  
+RUN cd /tmp
+
 # START - copied from https://github.com/fabric8io/builder-clients
 
 RUN curl --retry 999 --retry-max-time 0  -sSL https://github.com/openshift/origin/releases/download/v1.5.0/openshift-origin-client-tools-v1.5.0-031cbe4-linux-64bit.tar.gz | tar xzv && \
@@ -32,3 +30,5 @@ ENV FUNKTION_VERSION 1.0.13
 RUN curl -O --retry 999 --retry-max-time 0  -sSL https://github.com/funktionio/funktion/releases/download/v$FUNKTION_VERSION/funktion-linux-amd64 && \
   chmod +x funktion-linux-amd64 && \
   mv funktion-linux-amd64 /usr/bin/funktion  
+
+USER user
